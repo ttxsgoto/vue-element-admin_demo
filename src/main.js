@@ -21,13 +21,12 @@ import './mock' // simulation data
 
 import * as filters from './filters' // global filters
 
-
 // define begin
-import {httpServer01} from "./api/index"
-import * as pbFunc from "./assets/utils";
+import { httpServer01 } from './api/index'
+import * as pbFunc from './assets/utils'
 
-Vue.prototype.pbFunc = pbFunc;
-Vue.prototype.$$http01 = httpServer01;
+Vue.prototype.pbFunc = pbFunc
+Vue.prototype.$$http01 = httpServer01
 
 // define end
 

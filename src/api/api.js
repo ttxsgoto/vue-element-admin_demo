@@ -6,14 +6,14 @@ const api01 = {
     desc: '登录',
     param: {
       username: {
-        desc: '用户名',
+        desc: '用户名'
       },
       password: {
-        desc: '密码',
+        desc: '密码'
       }
     }
   },
-  searchCustomerList01:{
+  searchCustomerList01: {
     url: '/api/v1/consumer/',
     method: 'get',
     desc: '获取客户列表',
@@ -28,9 +28,7 @@ const api01 = {
     param: {
 
     }
-  },
-};
+  }
+}
 
 export default api01
-
-

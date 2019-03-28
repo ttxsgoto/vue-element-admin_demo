@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
@@ -71,7 +72,7 @@
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
+// import { validUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import SocialSign from './socialsignin'
 
@@ -79,13 +80,13 @@ export default {
   name: 'Login',
   components: { LangSelect, SocialSign },
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
-      } else {
-        callback()
-      }
-    }
+    // const validateUsername = (rule, value, callback) => {
+    //   if (!validUsername(value)) {
+    //     callback(new Error('Please enter the correct user name'))
+    //   } else {
+    //     callback()
+    //   }
+    // }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
         callback(new Error('The password can not be less than 6 digits'))
@@ -95,11 +96,15 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '1111111'
+        username: '',
+        password: '',
+        platform: 'WEB_CLIENT',
+        sms_verify_code: '1471'
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        username: [{ required: true, trigger: 'blur'
+          // validator: validateUsername
+        }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }]
       },
       passwordType: 'password',
@@ -134,11 +139,31 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-            this.loading = false
-            this.$router.push({ path: this.redirect || '/' })
-          }).catch(() => {
-            this.loading = false
+          this.$$http01('login01', this.loginForm).then((results) => {
+            if (results.data && results.data.code === 0) {
+              // this.pbFunc.setLocalData('token', results.data.data.token, true)
+              // this.pbFunc.setLocalData('user', results.data.data.user, true)
+              // if (results.data.data.user && results.data.data.user.menus && results.data.data.user.menus.length) {
+
+              // this.pbFunc.setLocalData('menuList', results.data.data.user.menus, true)
+              // this.$message({
+              this.$message({
+                message: '登录成功',
+                type: 'success'
+              })
+              console.log('------success')
+              this.$router.push({ path: '/' })
+              // this.$router.push({ path: this.redirect || '/' })
+            } else {
+              this.$alert('还没有设置权限！请联系管理员', '请注意', {
+                confirmButtonText: '关闭'
+              })
+              this.$message.error('登录失败')
+            }
+          }).catch((err) => {
+            this.$message.error('登录失败')
+            console.log('---', err)
+            // reject(err)
           })
         } else {
           console.log('error submit!!')

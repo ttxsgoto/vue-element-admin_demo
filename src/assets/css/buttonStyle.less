@@ -1,0 +1,99 @@
+.el-button {
+    height: 40px;
+    padding: 0 15px;
+
+    font-family: @tms-font-family-cn;
+    // font-size: 14px!important;
+    font-weight: 400;
+    line-height: 38px;
+}
+.el-button--medium {
+    height: 36px;
+    padding: 0 12px;
+
+    line-height: 36px;
+}
+.el-button--small {
+    height: 32px;
+    padding: 0 10px;
+
+    line-height: 32px;
+}
+.el-button--mini {
+    height: 28px;
+    padding: 0 10px;
+
+    line-height: 26px;
+}
+.operation-btn {
+    margin: 10px 0;
+    .el-button + .el-button {
+        margin-left: 5px;
+    }
+}
+.el-button--primary {
+    border-color: @tms-blue!important;
+    background-color: @tms-blue!important;
+    &:active {
+        border-color: @tms-blue!important;
+        background-color: @tms-blue!important;
+    }
+    &:hover {
+        border-color: @tms-light-blue-border!important;
+        background-color: @tms-light-blue!important;
+    }
+
+    &.is-plain {
+        color: @tms-blue;
+        border-color: @tms-transparent-border-blue!important;
+        background: @tms-transparent-blue!important;
+        &:hover {
+            color: @tms-white!important;
+            border-color: @tms-blue!important;
+            background: @tms-blue!important;
+        }
+        &:focus {
+            color: @tms-blue;
+        }
+        &.is-disabled {
+            color: @tms-transparent-font-disable-blue!important;
+            border-color: @tms-transparent-border-disable-blue!important;
+            background-color: @tms-transparent-disable-blue!important;
+        }
+    }
+    &.is-active,
+    &:active {
+        border-color: @tms-blue!important;
+        background-color: @tms-blue!important;
+    }
+    &.is-disabled {
+        border-color: @tms-disable-border-blue!important;
+        background-color: @tms-disable-blue!important;
+    }
+}
+.el-button--success {
+    border-color: @tms-green!important;
+    background-color: @tms-green!important;
+    &:hover,
+    &:active {
+        border-color: @tms-light-green!important;
+        background-color: @tms-light-green!important;
+    }
+    &.is-plain {
+        color: @tms-green!important;
+        border-color: @tms-light-green-border!important;
+        background-color: @tms-transparent-green!important;
+        &:hover {
+            color: @tms-green;
+        }
+    }
+    // &.is-disabled {
+    //     border-color: @tms-light-green;
+    //     background-color: @tms-light-green;
+    //     &:hover,
+    //     &:active {
+    //         border-color: @tms-light-green;
+    //         background-color: @tms-light-green;
+    //     }
+    // }
+}

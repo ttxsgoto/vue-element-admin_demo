@@ -21,6 +21,16 @@ import './mock' // simulation data
 
 import * as filters from './filters' // global filters
 
+
+// define begin
+import {httpServer01} from "./api/index"
+import * as pbFunc from "./assets/utils";
+
+Vue.prototype.pbFunc = pbFunc;
+Vue.prototype.$$http01 = httpServer01;
+
+// define end
+
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)
@@ -32,7 +42,7 @@ Object.keys(filters).forEach(key => {
 })
 
 Vue.config.productionTip = false
-
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
@@ -40,3 +50,4 @@ new Vue({
   i18n,
   render: h => h(App)
 })
+
